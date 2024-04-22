@@ -1,0 +1,19 @@
+import random
+
+
+
+def guess_game():
+    computer_guess = random.randint(1, 10)
+    num = 0
+    while num != computer_guess:
+        num = int(input("Guess a Number 1 - 10 "))
+        if num == computer_guess:
+            print(f"Correct!!! You win! \nComputer: {computer_guess}")
+            break
+        elif num != computer_guess:
+            print(f"Guess again... \ncomputer: {computer_guess}")
+
+
+
+
+guess_game()
