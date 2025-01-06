@@ -1,18 +1,28 @@
 import random
 
-
+random_guess = random.randint(1, 20)
 
 def guess_game():
-    computer_guess = random.randint(1, 10)
-    num = 0
-    while num != computer_guess:
-        num = int(input("Guess a Number 1 - 10 "))
-        if num == computer_guess:
-            print(f"Correct!!! You win! \nComputer: {computer_guess}")
+    count = 5
+    while count > 0: 
+        user_guess = int(input("Guess a number between 1-20"))
+        if user_guess < 1 or user_guess > 20:
+            print("Please pick a number BETWEEN 1-20")
+            continue
+        
+        if random_guess > user_guess:
+            print("Your guess is to low")
+        elif random_guess < user_guess:
+            print("Your guess is to high")
+        else:
+            random_guess == user_guess
+            print(f"Correct!!! You win! \n")
+            print(random_guess)
             break
-        elif num != computer_guess:
-            print(f"Guess again... \ncomputer: {computer_guess}")
-
+        
+        count -= 1
+    if count == 0:
+        print(f"Incorrect the number was {random_guess}")
 
 
 
