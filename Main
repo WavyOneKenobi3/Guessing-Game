@@ -1,29 +1,47 @@
 import random
 
-random_guess = random.randint(1, 20)
+easy_guess = random.randint(1, 20)  #10 attempts
+hard_guess = random.randint(1, 100)#5 attempts
 
 def guess_game():
-    count = 5
-    while count > 0: 
-        user_guess = int(input("Guess a number between 1-20"))
-        if user_guess < 1 or user_guess > 20:
-            print("Please pick a number BETWEEN 1-20")
-            continue
-        
-        if random_guess > user_guess:
-            print("Your guess is to low")
-        elif random_guess < user_guess:
-            print("Your guess is to high")
-        else:
-            random_guess == user_guess
-            print(f"Correct!!! You win! \n")
-            print(random_guess)
-            break
-        
-        count -= 1
-    if count == 0:
-        print(f"Incorrect the number was {random_guess}")
-
+    hard_count = 5
+    easy_count = 10
+    level = input("Choose a difficulty: Type 'easy' or 'hard'")
+    if level == "easy":
+        while easy_count > 0: 
+            user_guess = int(input("Guess a number between 1-20: "))
+            if user_guess < 1 or user_guess > 20:
+                print("Please pick a number BETWEEN 1-20")
+            elif easy_guess > user_guess:
+                print("Your guess is to low")
+            elif easy_guess < user_guess:
+                print("Your guess is to high")
+            elif easy_guess == user_guess:
+                print(f"Correct!!! You win! \n")
+                print(easy_guess)
+                break   
+            easy_count -= 1
+            print(f"You have {easy_count} amount of turns left. ")
+        if easy_count == 0:
+            print(f"You Lose the number was {easy_guess}")
+                
+    if level == "hard":
+        while hard_count > 0: 
+            user_guess = int(input("Guess a number between 1-100: "))
+            if user_guess < 1 or user_guess > 100:
+                print("Please pick a number BETWEEN 1-100")
+            elif hard_guess > user_guess:
+                print("Your guess is to low")
+            elif hard_guess < user_guess:
+                print("Your guess is to high")
+            elif hard_guess == user_guess:
+                print(f"Correct!!! You win! \n")
+                print(hard_guess)
+                break
+            hard_count -= 1
+            print(f"You have {hard_count} amount of turns left. ")
+        if hard_count == 0:
+            print(f"Incorrect the number was {hard_guess}")
 
 
 guess_game()
